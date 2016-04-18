@@ -44,10 +44,11 @@ test:
 
 about:
   home: http://jupyter.org
-  license: BSD License
+  license: BSD 3-Clause
   summary: 'Converting Jupyter Notebooks'
 
 extra:
   recipe-maintainers:
+    - jakirkham
     - pelson
     - minrk
