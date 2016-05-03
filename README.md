@@ -3,9 +3,9 @@ About nbconvert
 
 Home: http://jupyter.org
 
-Package license: BSD License
+Package license: BSD 3-Clause
 
-Feedstock license: BSD
+Feedstock license: BSD 3-Clause
 
 Summary: Converting Jupyter Notebooks
 
