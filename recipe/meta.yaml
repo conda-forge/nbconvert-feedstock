@@ -20,16 +20,18 @@ requirements:
     - python
     - pip
   run:
-    - python
-    - mistune >0.6
+    - bleach
+    - entrypoints >=0.2.2
     - jinja2
-    - pygments
-    - traitlets
     - jupyter_core
+    - mistune >0.6
     - nbformat
-    - entrypoints
     - pandoc
-    - pandocfilters
+    - pandocfilters >=1.4.1
+    - python
+    - pygments
+    - testpath
+    - traitlets
 
 test:
   imports:
