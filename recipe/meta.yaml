@@ -7,7 +7,7 @@ package:
 source:
   fn: nbconvert-{{ version }}.tar.gz
   url: https://github.com/jupyter/nbconvert/archive/{{ version }}.tar.gz
-  sha256: 9def08d46dbb3129c3056d6ec878e67a23a7e1a82fdc55525a1081c29879fe2e
+  sha256: 0505a52cab220bdff3af834ad3c0a2aae520b14b887bfc2ce0ff78b62f96fcd4
 
 build:
   number: 0
@@ -34,9 +34,6 @@ requirements:
     - pygments
     - testpath
     - traitlets
-    # FIXME: jupyter_client shouldn't be a dependency
-    # This will be fixed in in 5.1
-    # - jupyter_client
 
 test:
   imports:
