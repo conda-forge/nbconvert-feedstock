@@ -1,4 +1,4 @@
-{% set version = "5.0.0" %}
+{% set version = "5.1.0" %}
 
 package:
   name: nbconvert
@@ -36,7 +36,7 @@ requirements:
     - traitlets
     # FIXME: jupyter_client shouldn't be a dependency
     # This will be fixed in in 5.1
-    - jupyter_client
+    # - jupyter_client
 
 test:
   imports:
