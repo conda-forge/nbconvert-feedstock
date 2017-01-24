@@ -10,7 +10,7 @@ source:
   sha256: 1502366caab4f1aa86adebc9def492448f69310c88e52d0998c8edf2d97617ad 
 
 build:
-  number: 1
+  number: 0
   script: pip install --no-deps .
   # skip py36 while waiting for dependencies
   skip: True  # [py36]
