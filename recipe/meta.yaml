@@ -1,4 +1,4 @@
-{% set version = "4.2.0" %}
+{% set version = "5.1.1" %}
 
 package:
   name: nbconvert
@@ -7,26 +7,33 @@ package:
 source:
   fn: nbconvert-{{ version }}.tar.gz
   url: https://github.com/jupyter/nbconvert/archive/{{ version }}.tar.gz
-  sha256: 32394be5a20f39f99fabfb9b2f2625df17f1c2a6699182ca41598e98e7cc9610
+  sha256: 1502366caab4f1aa86adebc9def492448f69310c88e52d0998c8edf2d97617ad 
 
 build:
   number: 0
-  script: python setup.py install
+  script: pip install --no-deps .
+  # skip py36 while waiting for dependencies
+  skip: True  # [py36]
   entry_points:
     - jupyter-nbconvert = nbconvert.nbconvertapp:main
 
 requirements:
   build:
     - python
+    - pip
   run:
-    - python
-    - mistune >0.6
+    - bleach
+    - entrypoints >=0.2.2
     - jinja2
-    - pygments
-    - traitlets
     - jupyter_core
+    - mistune >0.6
     - nbformat
-    - entrypoints
+    - pandoc
+    - pandocfilters >=1.4.1
+    - python
+    - pygments
+    - testpath
+    - traitlets
 
 test:
   imports:
@@ -51,5 +58,7 @@ about:
 extra:
   recipe-maintainers:
     - jakirkham
-    - pelson
+    - michaelpacer
     - minrk
+    - pelson
+    - takluyver
