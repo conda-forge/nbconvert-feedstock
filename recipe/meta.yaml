@@ -12,8 +12,6 @@ source:
 build:
   number: 0
   script: pip install --no-deps .
-  # skip py36 while waiting for dependencies
-  skip: True  # [py36]
   entry_points:
     - jupyter-nbconvert = nbconvert.nbconvertapp:main
 
