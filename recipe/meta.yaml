@@ -24,6 +24,7 @@ requirements:
     - entrypoints >=0.2.2
     - jinja2
     - jupyter_core
+    - jupyter_client
     - mistune >0.6
     - nbformat
     - pandoc
