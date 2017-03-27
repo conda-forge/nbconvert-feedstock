@@ -10,7 +10,7 @@ source:
   sha256: 1502366caab4f1aa86adebc9def492448f69310c88e52d0998c8edf2d97617ad 
 
 build:
-  number: 0
+  number: 1
   script: pip install --no-deps .
   entry_points:
     - jupyter-nbconvert = nbconvert.nbconvertapp:main
@@ -24,6 +24,7 @@ requirements:
     - entrypoints >=0.2.2
     - jinja2
     - jupyter_core
+    - jupyter_client
     - mistune >0.6
     - nbformat
     - pandoc
@@ -44,9 +45,12 @@ test:
     - nbconvert.tests
     - nbconvert.utils
     - nbconvert.writers
+  source_files:
+    - nbconvert/tests/files/notebook1.ipynb
 
   commands:
-    - jupyter-nbconvert --help
+    - jupyter nbconvert --help
+    - jupyter nbconvert nbconvert/tests/files/notebook1.ipynb
 
 about:
   home: http://jupyter.org
