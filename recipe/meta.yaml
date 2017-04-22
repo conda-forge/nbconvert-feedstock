@@ -33,6 +33,9 @@ requirements:
     - pygments
     - testpath
     - traitlets
+    # FIXME: jupyter_client shouldn't be a dependency
+    # This will be fixed in in 5.1
+    - jupyter_client
 
 test:
   imports:
