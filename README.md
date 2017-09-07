@@ -14,9 +14,7 @@ Summary: Converting Jupyter Notebooks
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/nbconvert-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/nbconvert-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/nbconvert-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/nbconvert-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/nbconvert-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/nbconvert-feedstock/branch/master)
+All platforms: [![Circle CI](https://circleci.com/gh/conda-forge/nbconvert-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/nbconvert-feedstock)
 
 Current release info
 ====================
