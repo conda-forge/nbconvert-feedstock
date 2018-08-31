@@ -65,3 +65,5 @@ extra:
     - minrk
     - pelson
     - takluyver
+    - mseal
+    - blink1073
