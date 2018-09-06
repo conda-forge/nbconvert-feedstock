@@ -5,13 +5,12 @@ package:
   version: {{ version }}
 
 source:
-  fn: nbconvert-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
   sha256: a8a2749f972592aa9250db975304af6b7337f32337e523a2c995cc9e12c07807
 
 build:
   number: 0
-  script: pip install --no-deps .
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   noarch: python
   entry_points:
     - jupyter-nbconvert = nbconvert.nbconvertapp:main
@@ -21,19 +20,17 @@ requirements:
     - python
     - pip
   run:
-    - bleach
-    - entrypoints >=0.2.2
+    - mistune >=0.8.1
     - jinja2
-    - jupyter_core
-    - jupyter_client >=4.2
-    - mistune >=0.7.4
-    - nbformat >=4.4
-    - pandoc
-    - pandocfilters >=1.4.1
-    - python
     - pygments
+    - traitlets >=4.2
+    - jupyter_core
+    - nbformat >=4.4
+    - entrypoints >=0.2.2
+    - bleach
+    - pandocfilters >=1.4.1
     - testpath
-    - traitlets
+    - defusedxml
 
 test:
   imports:
@@ -56,6 +53,7 @@ test:
 about:
   home: http://jupyter.org
   license: BSD 3-Clause
+  license_file: LICENSE
   summary: 'Converting Jupyter Notebooks'
 
 extra:
