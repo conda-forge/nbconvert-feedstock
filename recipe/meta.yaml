@@ -31,6 +31,7 @@ requirements:
     - pandocfilters >=1.4.1
     - testpath
     - defusedxml
+    - pandoc
 
 test:
   imports:
