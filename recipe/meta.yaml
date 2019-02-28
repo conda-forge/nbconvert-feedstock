@@ -20,6 +20,7 @@ requirements:
     - python
     - pip
   run:
+    - python
     - mistune >=0.8.1
     - jinja2
     - pygments
