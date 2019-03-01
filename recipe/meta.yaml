@@ -9,7 +9,7 @@ source:
   sha256: 302554a2e219bc0fc84f3edd3e79953f3767b46ab67626fdec16e38ba3f7efe4
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   noarch: python
   entry_points:
@@ -20,6 +20,7 @@ requirements:
     - python
     - pip
   run:
+    - python
     - mistune >=0.8.1
     - jinja2
     - pygments
@@ -54,6 +55,7 @@ test:
 about:
   home: http://jupyter.org
   license: BSD-3-Clause
+  license_file: LICENSE
   summary: 'Converting Jupyter Notebooks'
   description: |
     The nbconvert tool, jupyter nbconvert, converts notebooks to various other
