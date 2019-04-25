@@ -1,7 +1,3 @@
-<!--
-# -*- mode: jinja -*-
--->
-
 About nbconvert
 ===============
 
@@ -21,8 +17,17 @@ formats via Jinja templates. The nbconvert tool allows you to convert an
 Current build status
 ====================
 
-All platforms:
-[![noarch](https://img.shields.io/circleci/project/github/conda-forge/nbconvert-feedstock/master.svg?label=noarch)](https://circleci.com/gh/conda-forge/nbconvert-feedstock)
+
+<table><tr>
+    
+    <td>All platforms:</td>
+    <td>
+      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5627&branchName=master">
+        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nbconvert-feedstock?branchName=master">
+      </a>
+    </td>
+  </tr>
+</table>
 
 Current release info
 ====================
