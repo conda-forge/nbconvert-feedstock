@@ -9,9 +9,8 @@ source:
   sha256: 427a468ec26e7d68a529b95f578d5cbf018cb4c1f889e897681c2b6d11897695
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
-  noarch: python
   entry_points:
     - jupyter-nbconvert = nbconvert.nbconvertapp:main
 
@@ -32,7 +31,7 @@ requirements:
     - pandocfilters >=1.4.1
     - testpath
     - defusedxml
-    - pandoc >=1.12.1
+    - pandoc >=1.12.1  # [not aarch64]
 
 test:
   imports:
