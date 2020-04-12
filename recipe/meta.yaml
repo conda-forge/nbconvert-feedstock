@@ -9,7 +9,7 @@ source:
   sha256: 21fb48e700b43e82ba0e3142421a659d7739b65568cc832a13976a77be16b523
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   entry_points:
     - jupyter-nbconvert = nbconvert.nbconvertapp:main
