@@ -1,4 +1,4 @@
-{% set version = "5.6.1" %}
+{% set version = "6.0.0" %}
 
 package:
   name: nbconvert
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: 21fb48e700b43e82ba0e3142421a659d7739b65568cc832a13976a77be16b523
+  sha256: d788b6acab5da06a2b7163f3b6cc69aad7d8781316e6b3a61a9a51f32ab8ea38
 
 build:
-  number: 1
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - jupyter-nbconvert = nbconvert.nbconvertapp:main
 
@@ -21,8 +21,8 @@ requirements:
   run:
     - python
     - mistune >=0.8.1
-    - jinja2
-    - pygments
+    - jinja2 >=2.4
+    - pygments >=2.4.1
     - traitlets >=4.2
     - jupyter_core
     - nbformat >=4.4
@@ -32,6 +32,10 @@ requirements:
     - testpath
     - defusedxml
     - pandoc >=1.12.1  # [not aarch64]
+    - nbclient >=0.5.0,<0.6.0
+    - jupyterlab_pygments
+  run_constrained:
+    - pyppeteer ==0.2.2
 
 test:
   imports:
@@ -49,13 +53,13 @@ test:
 
   commands:
     - jupyter nbconvert --help
-    - jupyter nbconvert nbconvert/tests/files/notebook1.ipynb
+    - jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to html
 
 about:
   home: http://jupyter.org
   license: BSD-3-Clause
   license_file: LICENSE
-  summary: 'Converting Jupyter Notebooks'
+  summary: Converting Jupyter Notebooks
   description: |
     The nbconvert tool, jupyter nbconvert, converts notebooks to various other
     formats via Jinja templates. The nbconvert tool allows you to convert an
