@@ -1,4 +1,4 @@
-{% set version = "6.0.3" %}
+{% set version = "6.0.4" %}
 
 package:
   name: nbconvert
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: d8490f40368a1324521f8e740a0e341dc40bcd6e6926da64fa64b3a8801f16a3
+  sha256: 73b3cff6090a16bb8ce2bfb84a6f8654802104e81da71d8a42297f5660a9ecea
 
 build:
   number: 0
