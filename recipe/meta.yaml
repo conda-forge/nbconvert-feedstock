@@ -9,13 +9,16 @@ source:
   sha256: cbbc13a86dfbd4d1b5dee106539de0795b4db156c894c2c5dc382062bbc29002
 
 build:
-  number: 2
+  number: 3
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - jupyter-nbconvert = nbconvert.nbconvertapp:main
 
 requirements:
   build:
+    - python                               # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}   # [build_platform != target_platform]
+  host:
     - python
     - pip
   run:
@@ -31,7 +34,7 @@ requirements:
     - pandocfilters >=1.4.1
     - testpath
     - defusedxml
-    - pandoc >=1.12.1  # [not (aarch64 or ppc64le)]
+    - pandoc >=1.12.1  # [x86]
     - nbclient >=0.5.0,<0.6.0
     - jupyterlab_pygments
   run_constrained:
