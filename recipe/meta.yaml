@@ -19,14 +19,14 @@ requirements:
     - python                               # [build_platform != target_platform]
     - cross-python_{{ target_platform }}   # [build_platform != target_platform]
   host:
-    - python
+    - python >=3.7
     - pip
   run:
-    - python
-    - mistune >=0.8.1
+    - python >=3.7
+    - mistune >=0.8.1,<2
     - jinja2 >=2.4
     - pygments >=2.4.1
-    - traitlets >=4.2
+    - traitlets >=5.0
     - jupyter_core
     - nbformat >=4.4
     - entrypoints >=0.2.2
