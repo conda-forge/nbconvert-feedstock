@@ -299,6 +299,7 @@ Feedstock Maintainers
 
 * [@blink1073](https://github.com/blink1073/)
 * [@jakirkham](https://github.com/jakirkham/)
+* [@jasongrout](https://github.com/jasongrout/)
 * [@minrk](https://github.com/minrk/)
 * [@mpacer](https://github.com/mpacer/)
 * [@mseal](https://github.com/mseal/)
