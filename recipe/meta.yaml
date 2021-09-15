@@ -9,7 +9,7 @@ source:
   sha256: d22a8ff202644d31db254d24d52c3a96c82156623fcd7c7f987bba2612303ec9
 
 build:
-  number: 0
+  number: 1
   skip: True  # [py<37]
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
@@ -81,3 +81,4 @@ extra:
     - mseal
     - blink1073
     - ocefpaf
+    - jasongrout
