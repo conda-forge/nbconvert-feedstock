@@ -3,7 +3,7 @@ cdt_name:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge main
+- conda-forge nbconvert_rc
 docker_image:
 - quay.io/condaforge/linux-anvil-comp7
 pin_run_as_build:
