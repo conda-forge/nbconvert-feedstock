@@ -11,7 +11,7 @@ source:
 build:
   number: 0
   skip: True  # [py<37]
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  script: "{{ PYTHON }} -m pip install . -vv"
   entry_points:
     - jupyter-nbconvert = nbconvert.nbconvertapp:main
 
@@ -60,7 +60,7 @@ test:
     - jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to html
 
 about:
-  home: http://jupyter.org
+  home: https://jupyter.org
   license: BSD-3-Clause
   license_file: LICENSE
   summary: Converting Jupyter Notebooks
@@ -68,7 +68,7 @@ about:
     The nbconvert tool, jupyter nbconvert, converts notebooks to various other
     formats via Jinja templates. The nbconvert tool allows you to convert an
     .ipynb notebook file into various static formats.
-  doc_url: http://nbconvert.readthedocs.org/
+  doc_url: https://nbconvert.readthedocs.org/
   dev_url: https://github.com/jupyter/nbconvert
 
 extra:
