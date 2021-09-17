@@ -1,5 +1,5 @@
-{% set version = "6.2.0rc1" %}
-{% set sha256 = "5a3180ffc881f641db50de7a8207cc40e93d68cdbcc7de0eebf8a7c1fed03f03" %}
+{% set version = "6.2.0rc2" %}
+{% set sha256 = "95b3097ad142c70b8dd8cbc993320a1a5011b014b4382eb77142a14662194f02" %}
 
 package:
   name: nbconvert
