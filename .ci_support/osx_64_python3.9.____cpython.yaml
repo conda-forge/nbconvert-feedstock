@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge main
+- conda-forge nbconvert_rc
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pin_run_as_build:

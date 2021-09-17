@@ -1,7 +1,7 @@
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge main
+- conda-forge nbconvert_rc
 pin_run_as_build:
   python:
     min_pin: x.x
