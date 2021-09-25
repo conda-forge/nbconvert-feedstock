@@ -1,7 +1,7 @@
 About nbconvert
 ===============
 
-Home: http://jupyter.org
+Home: https://jupyter.org
 
 Package license: BSD-3-Clause
 
@@ -11,7 +11,7 @@ Summary: Converting Jupyter Notebooks
 
 Development: https://github.com/jupyter/nbconvert
 
-Documentation: http://nbconvert.readthedocs.org/
+Documentation: https://nbconvert.readthedocs.org/
 
 The nbconvert tool, jupyter nbconvert, converts notebooks to various other
 formats via Jinja templates. The nbconvert tool allows you to convert an
