@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: 91ff0058b45660aad4a68088041059c0d378cd53fc8aff60e5abc91bcc049353
+  sha256: 5412ec774c6db4fccecb8c4ba07ec5d37d6dcf5762593cb3d6ecbbeb562ebbe5
 
 build:
   number: 1
