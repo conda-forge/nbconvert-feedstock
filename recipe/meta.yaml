@@ -11,9 +11,7 @@ source:
 build:
   number: 0
   skip: True  # [py<37]
-  script:
-    - {{ PYTHON }} -c "__import__('pathlib').Path('Makefile').touch()"
-    - {{ PYTHON }} -m pip install . -vv
+  script: "{{ PYTHON }} -m pip install . -vv"
   entry_points:
     - jupyter-nbconvert = nbconvert.nbconvertapp:main
     - jupyter-dejavu = nbconvert.nbconvertapp:dejavu_main
