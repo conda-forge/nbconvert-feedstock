@@ -1,5 +1,4 @@
-{% set version = "6.3.0" %}
-{% set sha256 = "5e77d6203854944520105e38f2563a813a4a3708e8563aa598928a3b5ee1081a" %}
+{% set version = "6.4.0" %}
 
 package:
   name: nbconvert
@@ -7,14 +6,15 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 5412ec774c6db4fccecb8c4ba07ec5d37d6dcf5762593cb3d6ecbbeb562ebbe5
 
 build:
-  number: 1
+  number: 0
   skip: True  # [py<37]
   script: "{{ PYTHON }} -m pip install . -vv"
   entry_points:
     - jupyter-nbconvert = nbconvert.nbconvertapp:main
+    - jupyter-dejavu = nbconvert.nbconvertapp:dejavu_main
 
 requirements:
   build:
@@ -57,7 +57,10 @@ test:
     - nbconvert/tests/files/notebook1.ipynb
 
   commands:
+    - jupyter nbconvert --version
+    - jupyter dejavu --version
     - jupyter nbconvert --help
+    - jupyter dejavu --help
     - jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to html
 
 about:
