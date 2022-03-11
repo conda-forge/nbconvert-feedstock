@@ -1,4 +1,4 @@
-{% set version = "6.4.2" %}
+{% set version = "6.4.3" %}
 
 package:
   name: nbconvert
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: eb2803db18f6facce6bf3b01b684fe47907994bd156d15eaccdf011e3d7f8164
+  sha256: b7cfb62d4e9cfcb7d2485c78ca06acc5d9bbb271f2f7e968526bbc430e822e8f
 
 build:
   number: 0
@@ -40,7 +40,7 @@ requirements:
     - nbclient >=0.5.0,<0.6.0
     - jupyterlab_pygments
   run_constrained:
-   - pyppeteer >=1,<1.1
+    - pyppeteer >=1,<1.1
 
 test:
   imports:
@@ -86,3 +86,4 @@ extra:
     - blink1073
     - ocefpaf
     - jasongrout
+    - bollwyvl
