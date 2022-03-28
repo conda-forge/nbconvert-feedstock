@@ -44,7 +44,7 @@ outputs:
   - name: nbconvert-core
     build:
       noarch: python
-      script: "{{ PYTHON }} -m pip install . -vv"
+      script: "{{ PYTHON }} -m pip install . -vv --no-deps"
       entry_points:
         - jupyter-dejavu = nbconvert.nbconvertapp:dejavu_main
         - jupyter-nbconvert = nbconvert.nbconvertapp:main
