@@ -40,6 +40,10 @@ outputs:
         - pip
       commands:
         - pip check
+        - jupyter nbconvert --version
+        - jupyter dejavu --version
+        - jupyter nbconvert --help
+        - jupyter dejavu --help
 
   - name: nbconvert-core
     build:
@@ -107,6 +111,10 @@ outputs:
         - pip
       commands:
         - pip check
+        - jupyter nbconvert --version
+        - jupyter dejavu --version
+        - jupyter nbconvert --help
+        - jupyter dejavu --help
     about:
       description: nbconvert with extra packages for browser-based PDF generation
 
@@ -127,6 +135,10 @@ outputs:
         - pip
       commands:
         - pip check
+        - jupyter nbconvert --version
+        - jupyter dejavu --version
+        - jupyter nbconvert --help
+        - jupyter dejavu --help
     about:
       description: nbconvert with extra packages for pandoc-based outputs
 
@@ -148,6 +160,10 @@ outputs:
         - pip
       commands:
         - pip check
+        - jupyter nbconvert --version
+        - jupyter dejavu --version
+        - jupyter nbconvert --help
+        - jupyter dejavu --help
         - jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to html
     about:
       description: nbconvert with all optional packages
