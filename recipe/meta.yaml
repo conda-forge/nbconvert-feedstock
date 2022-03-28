@@ -29,46 +29,48 @@ outputs:
       noarch: python
     requirements:
       host:
-        - python >=3.7
         - pip
+        - python >=3.7
       run:
         - {{ pin_subpackage("nbconvert-core", exact=True) }}
         - {{ pin_subpackage("nbconvert-pandoc", exact=True) }}
+        - python >=3.7
     test:
       requires:
         - pip
       commands:
-        - python -m pip check
+        - pip check
 
   - name: nbconvert-core
     build:
       noarch: python
       script: "{{ PYTHON }} -m pip install . -vv"
       entry_points:
-        - jupyter-nbconvert = nbconvert.nbconvertapp:main
         - jupyter-dejavu = nbconvert.nbconvertapp:dejavu_main
+        - jupyter-nbconvert = nbconvert.nbconvertapp:main
     requirements:
       host:
-        - python >=3.7
         - pip
-      run:
         - python >=3.7
-        - mistune >=0.8.1,<2
-        - jinja2 >=2.4
-        - pygments >=2.4.1
-        - traitlets >=5.0
-        - jupyter_core
-        - nbformat >=4.4
-        - entrypoints >=0.2.2
-        - bleach
-        - pandocfilters >=1.4.1
-        - testpath
-        - defusedxml
-        - nbclient >=0.5.0,<0.6.0
-        - jupyterlab_pygments
+      run:
         - beautifulsoup4
-        - MarkupSafe >=2.0
+        - bleach
+        - defusedxml
+        - entrypoints >=0.2.2
+        - jinja2 >=2.4
+        - jupyter_core
+        - jupyterlab_pygments
+        - markupsafe >=2.0
+        - mistune >=0.8.1,<2
+        - nbclient >=0.5.0,<0.6.0
+        - nbformat >=4.4
+        - pandocfilters >=1.4.1
+        - pygments >=2.4.1
+        - python >=3.7
+        - testpath
+        - traitlets >=5.0
       run_constrained:
+        # other packages carry the full `run` dependency
         - pandoc >=1.12.1
         - pyppeteer >=1,<1.1
     test:
@@ -97,13 +99,14 @@ outputs:
         - pip
       run:
         - {{ pin_subpackage("nbconvert-core", exact=True) }}
-        # the pin is handled by the run_constrained in nbconvert-core
+        # the pin is handled by the `run_constrained` in nbconvert-core
         - pyppeteer
+        - python >=3.7
     test:
       requires:
         - pip
       commands:
-        - python -m pip check
+        - pip check
     about:
       description: nbconvert with extra packages for browser-based PDF generation
 
@@ -112,17 +115,18 @@ outputs:
       noarch: python
     requirements:
       host:
-        - python >=3.7
         - pip
+        - python >=3.7
       run:
         - {{ pin_subpackage("nbconvert-core", exact=True) }}
-        # the pin is handled by the run_constrained in nbconvert-core
+        # the pin is handled by the `run_constrained` in nbconvert-core
         - pandoc
+        - python >=3.7
     test:
       requires:
         - pip
       commands:
-        - python -m pip check
+        - pip check
     about:
       description: nbconvert with extra packages for pandoc-based outputs
 
@@ -131,18 +135,19 @@ outputs:
       noarch: python
     requirements:
       host:
-        - python >=3.7
         - pip
+        - python >=3.7
       run:
-        - {{ pin_subpackage("nbconvert", exact=True) }}
         - {{ pin_subpackage("nbconvert-webpdf", exact=True) }}
+        - {{ pin_subpackage("nbconvert", exact=True) }}
+        - python >=3.7
     test:
       source_files:
         - nbconvert/tests/files/notebook1.ipynb
       requires:
         - pip
       commands:
-        - python -m pip check
+        - pip check
         - jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to html
     about:
       description: nbconvert with all optional packages
