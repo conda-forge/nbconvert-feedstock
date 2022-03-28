@@ -1,7 +1,7 @@
 {% set version = "6.4.5" %}
 
 package:
-  name: nbconvert
+  name: nbconvert-meta
   version: {{ version }}
 
 source:
@@ -9,61 +9,143 @@ source:
   sha256: 21163a8e2073c07109ca8f398836e45efdba2aacea68d6f75a8a545fef070d4e
 
 build:
-  number: 0
-  skip: True  # [py<37]
-  script: "{{ PYTHON }} -m pip install . -vv"
-  entry_points:
-    - jupyter-nbconvert = nbconvert.nbconvertapp:main
-    - jupyter-dejavu = nbconvert.nbconvertapp:dejavu_main
+  number: 1
+  noarch: python
 
 requirements:
-  build:
-    - python                               # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}   # [build_platform != target_platform]
   host:
-    - python
+    - python >=3.7
     - pip
   run:
-    - python
-    - mistune >=0.8.1,<2
-    - jinja2 >=2.4
-    - pygments >=2.4.1
-    - traitlets >=5.0
-    - jupyter_core
-    - nbformat >=4.4
-    - entrypoints >=0.2.2
-    - bleach
-    - pandocfilters >=1.4.1
-    - testpath
-    - defusedxml
-    - pandoc >=1.12.1  # [x86]
-    - nbclient >=0.5.0,<0.6.0
-    - jupyterlab_pygments
-    - beautifulsoup4
-    - MarkupSafe >=2.0
-  run_constrained:
-    - pyppeteer >=1,<1.1
+    - python >=3.7
 
 test:
-  imports:
-    - nbconvert
-    - nbconvert.exporters
-    - nbconvert.filters
-    - nbconvert.postprocessors
-    - nbconvert.preprocessors
-    - nbconvert.resources
-    - nbconvert.tests
-    - nbconvert.utils
-    - nbconvert.writers
-  source_files:
-    - nbconvert/tests/files/notebook1.ipynb
-
   commands:
-    - jupyter nbconvert --version
-    - jupyter dejavu --version
-    - jupyter nbconvert --help
-    - jupyter dejavu --help
-    - jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to html
+    - echo "tests in outputs"
+
+outputs:
+  - name: nbconvert
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python >=3.7
+        - pip
+      run:
+        - {{ pin_subpackage("nbconvert-core", exact=True) }}
+        - {{ pin_subpackage("nbconvert-pandoc", exact=True) }}
+    test:
+      requires:
+        - pip
+      commands:
+        - python -m pip check
+
+  - name: nbconvert-core
+    build:
+      noarch: python
+      script: "{{ PYTHON }} -m pip install . -vv"
+      entry_points:
+        - jupyter-nbconvert = nbconvert.nbconvertapp:main
+        - jupyter-dejavu = nbconvert.nbconvertapp:dejavu_main
+    requirements:
+      host:
+        - python >=3.7
+        - pip
+      run:
+        - python >=3.7
+        - mistune >=0.8.1,<2
+        - jinja2 >=2.4
+        - pygments >=2.4.1
+        - traitlets >=5.0
+        - jupyter_core
+        - nbformat >=4.4
+        - entrypoints >=0.2.2
+        - bleach
+        - pandocfilters >=1.4.1
+        - testpath
+        - defusedxml
+        - nbclient >=0.5.0,<0.6.0
+        - jupyterlab_pygments
+        - beautifulsoup4
+        - MarkupSafe >=2.0
+      run_constrained:
+        - pandoc >=1.12.1
+        - pyppeteer >=1,<1.1
+    test:
+      imports:
+        - nbconvert
+        - nbconvert.exporters
+        - nbconvert.filters
+        - nbconvert.postprocessors
+        - nbconvert.preprocessors
+        - nbconvert.resources
+        - nbconvert.tests
+        - nbconvert.utils
+        - nbconvert.writers
+      commands:
+        - jupyter nbconvert --version
+        - jupyter dejavu --version
+        - jupyter nbconvert --help
+        - jupyter dejavu --help
+
+  - name: nbconvert-webpdf
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python >=3.7
+        - pip
+      run:
+        - {{ pin_subpackage("nbconvert-core", exact=True) }}
+        # the pin is handled by the run_constrained in nbconvert-core
+        - pyppeteer
+    test:
+      requires:
+        - pip
+      commands:
+        - python -m pip check
+    about:
+      description: nbconvert with extra packages for browser-based PDF generation
+
+  - name: nbconvert-pandoc
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python >=3.7
+        - pip
+      run:
+        - {{ pin_subpackage("nbconvert-core", exact=True) }}
+        # the pin is handled by the run_constrained in nbconvert-core
+        - pandoc
+    test:
+      requires:
+        - pip
+      commands:
+        - python -m pip check
+    about:
+      description: nbconvert with extra packages for pandoc-based outputs
+
+  - name: nbconvert-all
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python >=3.7
+        - pip
+      run:
+        - {{ pin_subpackage("nbconvert", exact=True) }}
+        - {{ pin_subpackage("nbconvert-webpdf", exact=True) }}
+    test:
+      source_files:
+        - nbconvert/tests/files/notebook1.ipynb
+      requires:
+        - pip
+      commands:
+        - python -m pip check
+        - jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to html
+    about:
+      description: nbconvert with all optional packages
 
 about:
   home: https://jupyter.org
@@ -78,6 +160,7 @@ about:
   dev_url: https://github.com/jupyter/nbconvert
 
 extra:
+  feedstock-name: nbconvert
   recipe-maintainers:
     - jakirkham
     - mpacer
