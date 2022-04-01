@@ -1,4 +1,5 @@
 {% set version = "6.4.5" %}
+{% set build = 2 %}
 
 package:
   name: nbconvert-meta
@@ -9,7 +10,7 @@ source:
   sha256: 21163a8e2073c07109ca8f398836e45efdba2aacea68d6f75a8a545fef070d4e
 
 build:
-  number: 2
+  number: {{ build }}
   noarch: python
 
 requirements:
@@ -78,7 +79,9 @@ outputs:
         - pandoc >=1.12.1
         - pyppeteer >=1,<1.1
         # avoid mixing nbconvert-core and pre-split nbconvert
-        - {{ pin_subpackage("nbconvert", exact=True) }}
+        # should be {{ pin_subpackage("nbconvert", exact=True) }}
+        # but seems to produce the wrong thing here
+        - nbconvert ={{ version }}=*_{{ build }}
 
     test:
       imports:
