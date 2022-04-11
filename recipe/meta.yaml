@@ -73,7 +73,7 @@ outputs:
         - pandocfilters >=1.4.1
         - pygments >=2.4.1
         - python >=3.7
-        - tinycss
+        - tinycss2
         - traitlets >=5.0
       run_constrained:
         # other packages carry the full `run` dependency
