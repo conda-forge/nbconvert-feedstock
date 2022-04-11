@@ -62,17 +62,18 @@ outputs:
         - bleach
         - defusedxml
         - entrypoints >=0.2.2
-        - jinja2 >=2.4
-        - jupyter_core
+        - jinja2 >=3.0
+        - jupyter_core >=4.7
         - jupyterlab_pygments
         - markupsafe >=2.0
         - mistune >=0.8.1,<2
-        - nbclient >=0.5.0,<0.6.0
-        - nbformat >=4.4
+        - nbclient >=0.5.0
+        - nbformat >=5.1
+        - packaging
         - pandocfilters >=1.4.1
         - pygments >=2.4.1
         - python >=3.7
-        - testpath
+        - tinycss
         - traitlets >=5.0
       run_constrained:
         # other packages carry the full `run` dependency
