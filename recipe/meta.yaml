@@ -1,4 +1,4 @@
-{% set version = "6.5.0" %}
+{% set version = "6.5.1" %}
 {% set build = 0 %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: 223e46e27abe8596b8aed54301fadbba433b7ffea8196a68fd7b1ff509eee99d
+  sha256: 2c01f3f518fee736c3d3f999dd20e0a16febba17a0d60a3b0fd28fbdec14115d
 
 build:
   number: {{ build }}
@@ -65,6 +65,7 @@ outputs:
         - jinja2 >=3.0
         - jupyter_core >=4.7
         - jupyterlab_pygments
+        - lxml
         - markupsafe >=2.0
         - mistune >=0.8.1,<2
         - nbclient >=0.5.0
