@@ -1,4 +1,4 @@
-{% set version = "6.5.2" %}
+{% set version = "6.5.3" %}
 {% set build = 0 %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: 48426ef6c592cf338dad2ef408deaf87db019591f697b6d906a759aa72e19dcd
+  sha256: 10ed693c4cfd3c63583c87ca5c3a2f6ed874145103595f3824efcc8dfcb7522c
 
 build:
   number: {{ build }}
@@ -201,3 +201,4 @@ extra:
     - ocefpaf
     - jasongrout
     - bollwyvl
+    - martinRenou
