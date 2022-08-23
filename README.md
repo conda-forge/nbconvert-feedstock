@@ -160,6 +160,7 @@ Feedstock Maintainers
 * [@bollwyvl](https://github.com/bollwyvl/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@jasongrout](https://github.com/jasongrout/)
+* [@martinRenou](https://github.com/martinRenou/)
 * [@minrk](https://github.com/minrk/)
 * [@mpacer](https://github.com/mpacer/)
 * [@mseal](https://github.com/mseal/)
