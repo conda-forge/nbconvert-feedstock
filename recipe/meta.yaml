@@ -94,7 +94,6 @@ outputs:
         - nbconvert.postprocessors
         - nbconvert.preprocessors
         - nbconvert.resources
-        - nbconvert.tests
         - nbconvert.utils
         - nbconvert.writers
       commands:
