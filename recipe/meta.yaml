@@ -1,4 +1,4 @@
-{% set version = "7.0.0" %}
+{% set version = "7.1.0" %}
 {% set build = 0 %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: fd1e361da30e30e4c5a5ae89f7cae95ca2a4d4407389672473312249a7ba0060
+  sha256: 308c9648ebd20823cfd5af12202ac0ef5f8913fe35b51e72db28d2ca0f66a598
 
 build:
   number: {{ build }}
@@ -58,7 +58,6 @@ outputs:
         - pip
         - python >=3.7
       run:
-        - lxml
         - beautifulsoup4
         - bleach
         - defusedxml
@@ -66,7 +65,6 @@ outputs:
         - jinja2 >=3.0
         - jupyter_core >=4.7
         - jupyterlab_pygments
-        - lxml
         - markupsafe >=2.0
         - mistune >=2.0.3,<3
         - nbclient >=0.5.0
