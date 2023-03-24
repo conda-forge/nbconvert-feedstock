@@ -77,7 +77,8 @@ outputs:
         - traitlets >=5.0
       run_constrained:
         # other packages carry the full `run` dependency
-        - pandoc >=1.12.1
+        # as specified in nbconvert/utils/pandoc.py
+        - pandoc >=1.12.1,<3.0.0
         - pyppeteer >=1,<1.1
         # avoid mixing nbconvert-core and pre-split nbconvert
         # should be {{ pin_subpackage("nbconvert", exact=True) }}
