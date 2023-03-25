@@ -2,11 +2,7 @@
 {% set build = 1 %}
 
 {% set min_pandoc = "1.12.1" %}
-{% set max_pandoc = "" %}
-
-# expected
-# _minimal_version = "1.12.1"
-# _maximal_version = "3.0.0"
+{% set max_pandoc = "3.0.0" %}
 
 package:
   name: nbconvert-meta
@@ -84,8 +80,7 @@ outputs:
         - traitlets >=5.0
       run_constrained:
         # other packages carry the full `run` dependency
-        - pandoc >={{ min_pandoc }}
-        #                          ,<{{ max_pandoc }}
+        - pandoc >={{ min_pandoc }},<{{ max_pandoc }}
         - pyppeteer >=1,<1.1
         # avoid mixing nbconvert-core and pre-split nbconvert
         # should be {{ pin_subpackage("nbconvert", exact=True) }}
