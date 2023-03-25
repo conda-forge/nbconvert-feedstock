@@ -1,5 +1,12 @@
 {% set version = "7.2.10" %}
-{% set build = 0 %}
+{% set build = 1 %}
+
+{% set min_pandoc = "1.12.1" %}
+{% set max_pandoc = "" %}
+
+# expected
+# _minimal_version = "1.12.1"
+# _maximal_version = "3.0.0"
 
 package:
   name: nbconvert-meta
@@ -77,7 +84,8 @@ outputs:
         - traitlets >=5.0
       run_constrained:
         # other packages carry the full `run` dependency
-        - pandoc >=1.12.1
+        - pandoc >={{ min_pandoc }}
+        #                          ,<{{ max_pandoc }}
         - pyppeteer >=1,<1.1
         # avoid mixing nbconvert-core and pre-split nbconvert
         # should be {{ pin_subpackage("nbconvert", exact=True) }}
@@ -137,6 +145,8 @@ outputs:
         - pandoc
         - python >=3.7
     test:
+      files:
+        - check_pandoc.py
       requires:
         - pip
       commands:
@@ -145,6 +155,7 @@ outputs:
         - jupyter dejavu --version
         - jupyter nbconvert --help
         - jupyter dejavu --help
+        - python check_pandoc.py ">={{ min_pandoc }}" "<{{ max_pandoc }}"
     about:
       description: nbconvert with extra packages for pandoc-based outputs
 
