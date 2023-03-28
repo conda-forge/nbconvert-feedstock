@@ -1,6 +1,10 @@
 {% set version = "7.2.10" %}
 {% set build = 0 %}
 
+# as specified in nbconvert/utils/pandoc.py
+{% set pandoc_min_version = "1.12.1" %}
+{% set pandoc_max_version = "3.0.0" %}
+
 package:
   name: nbconvert-meta
   version: {{ version }}
@@ -77,8 +81,7 @@ outputs:
         - traitlets >=5.0
       run_constrained:
         # other packages carry the full `run` dependency
-        # as specified in nbconvert/utils/pandoc.py
-        - pandoc >=1.12.1,<3.0.0
+        - pandoc >={{ pandoc_min_version }},<{{ pandoc_max_version }}
         - pyppeteer >=1,<1.1
         # avoid mixing nbconvert-core and pre-split nbconvert
         # should be {{ pin_subpackage("nbconvert", exact=True) }}
@@ -94,12 +97,15 @@ outputs:
         - nbconvert.preprocessors
         - nbconvert.resources
         - nbconvert.utils
+        - nbconvert.utils.pandoc
         - nbconvert.writers
       commands:
         - jupyter nbconvert --version
         - jupyter dejavu --version
         - jupyter nbconvert --help
         - jupyter dejavu --help
+        - python -c "p = __import__('nbconvert.utils.pandoc'); assert (p._minimal_version, p._maximal_version)==('{{ pandoc_min_version }}', '{{ pandoc_max_version }}')"
+
 
   - name: nbconvert-webpdf
     build:
