@@ -104,8 +104,7 @@ outputs:
         - jupyter dejavu --version
         - jupyter nbconvert --help
         - jupyter dejavu --help
-        - python -c "p = __import__('nbconvert.utils.pandoc'); assert (p._minimal_version, p._maximal_version)==('{{ pandoc_min_version }}', '{{ pandoc_max_version }}')"
-
+        - python -c "n = __import__('nbconvert.utils.pandoc'); p = n.utils.pandoc; assert (p._minimal_version, p._maximal_version)==('{{ pandoc_min_version }}', '{{ pandoc_max_version }}')"
 
   - name: nbconvert-webpdf
     build:
