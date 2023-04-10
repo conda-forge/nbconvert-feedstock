@@ -58,6 +58,7 @@ outputs:
         - jupyter-nbconvert = nbconvert.nbconvertapp:main
     requirements:
       host:
+        - hatchling >=0.25
         - pip
         - python >=3.7
       run:
