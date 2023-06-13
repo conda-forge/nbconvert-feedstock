@@ -1,8 +1,8 @@
 {% set version = "7.5.0" %}
 {% set build = 0 %}
 
-{% set min_pandoc = "1.12.1" %}
-{% set max_pandoc = "3.0.0" %}
+{% set min_pandoc = "2.14.2" %}
+{% set max_pandoc = "4.0.0" %}
 
 package:
   name: nbconvert-meta
