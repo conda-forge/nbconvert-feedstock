@@ -1,4 +1,4 @@
-{% set version = "7.5.0" %}
+{% set version = "7.6.0" %}
 {% set build = 0 %}
 
 {% set min_pandoc = "2.14.2" %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: f78fd22fd2410b960d5d9bcecf3e1d6c7bdc5fec2c865964c84aa4e74e6e88da
+  sha256: 24fcf27efdef2b51d7f090cc5ce5a9b178766a55be513c4ebab08c91899ab550
 
 build:
   number: {{ build }}
@@ -70,7 +70,7 @@ outputs:
         - jupyter_core >=4.7
         - jupyterlab_pygments
         - markupsafe >=2.0
-        - mistune >=2.0.3,<3
+        - mistune >=2.0.3,<4
         - nbclient >=0.5.0
         - nbformat >=5.1
         - packaging
