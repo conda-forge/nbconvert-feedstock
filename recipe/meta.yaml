@@ -1,4 +1,4 @@
-{% set version = "7.6.0" %}
+{% set version = "7.7.1" %}
 {% set build = 0 %}
 
 {% set min_pandoc = "2.14.2" %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: 24fcf27efdef2b51d7f090cc5ce5a9b178766a55be513c4ebab08c91899ab550
+  sha256: b820b206bd16898d39198a732dac6fb7019e82a44a282f606d931b8113240295
 
 build:
   number: {{ build }}
@@ -18,10 +18,10 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python >=3.8
     - pip
   run:
-    - python >=3.7
+    - python >=3.8
 
 test:
   commands:
@@ -34,11 +34,11 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.7
+        - python >=3.8
       run:
         - {{ pin_subpackage("nbconvert-core", exact=True) }}
         - {{ pin_subpackage("nbconvert-pandoc", exact=True) }}
-        - python >=3.7
+        - python >=3.8
     test:
       requires:
         - pip
@@ -58,9 +58,9 @@ outputs:
         - jupyter-nbconvert = nbconvert.nbconvertapp:main
     requirements:
       host:
-        - hatchling >=0.25
+        - hatchling >=1.5
         - pip
-        - python >=3.7
+        - python >=3.8
       run:
         - beautifulsoup4
         - bleach
@@ -76,7 +76,7 @@ outputs:
         - packaging
         - pandocfilters >=1.4.1
         - pygments >=2.4.1
-        - python >=3.7
+        - python >=3.8
         - tinycss2
         - traitlets >=5.0
       run_constrained:
@@ -109,13 +109,13 @@ outputs:
       noarch: python
     requirements:
       host:
-        - python >=3.7
+        - python >=3.8
         - pip
       run:
         - {{ pin_subpackage("nbconvert-core", exact=True) }}
         # the pin is handled by the `run_constrained` in nbconvert-core
         - pyppeteer
-        - python >=3.7
+        - python >=3.8
     test:
       requires:
         - pip
@@ -134,12 +134,12 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.7
+        - python >=3.8
       run:
         - {{ pin_subpackage("nbconvert-core", exact=True) }}
         # the pin is handled by the `run_constrained` in nbconvert-core
         - pandoc
-        - python >=3.7
+        - python >=3.8
     test:
       files:
         - check_pandoc.py
@@ -161,11 +161,11 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.7
+        - python >=3.8
       run:
         - {{ pin_subpackage("nbconvert-webpdf", exact=True) }}
         - {{ pin_subpackage("nbconvert", exact=True) }}
-        - python >=3.7
+        - python >=3.8
     test:
       source_files:
         - nbconvert/tests/files/notebook1.ipynb
