@@ -3,6 +3,7 @@ About nbconvert-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nbconvert-feedstock/blob/main/LICENSE.txt)
 
+
 About nbconvert
 ---------------
 
@@ -20,6 +21,7 @@ The nbconvert tool, jupyter nbconvert, converts notebooks to various other
 formats via Jinja templates. The nbconvert tool allows you to convert an
 .ipynb notebook file into various static formats.
 
+
 About nbconvert-pandoc
 ----------------------
 
@@ -28,6 +30,7 @@ About nbconvert-pandoc
 Package license: 
 
 nbconvert with extra packages for pandoc-based outputs
+
 About nbconvert-webpdf
 ----------------------
 
@@ -36,6 +39,7 @@ About nbconvert-webpdf
 Package license: 
 
 nbconvert with extra packages for browser-based PDF generation
+
 About nbconvert-all
 -------------------
 
