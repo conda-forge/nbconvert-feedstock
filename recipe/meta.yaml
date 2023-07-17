@@ -1,4 +1,4 @@
-{% set version = "7.6.0" %}
+{% set version = "7.7.0" %}
 {% set build = 0 %}
 
 {% set min_pandoc = "2.14.2" %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: 24fcf27efdef2b51d7f090cc5ce5a9b178766a55be513c4ebab08c91899ab550
+  sha256: 1c3fe6f33583148f84e9cf07353ee092a1e7f1bed72a98485568696785397e07
 
 build:
   number: {{ build }}
