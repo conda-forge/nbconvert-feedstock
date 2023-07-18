@@ -1,5 +1,4 @@
 {% set version = "7.7.1" %}
-{% set build = 0 %}
 
 {% set min_pandoc = "2.14.2" %}
 {% set max_pandoc = "4.0.0" %}
@@ -13,7 +12,7 @@ source:
   sha256: b820b206bd16898d39198a732dac6fb7019e82a44a282f606d931b8113240295
 
 build:
-  number: {{ build }}
+  number: 1
   noarch: python
 
 requirements:
