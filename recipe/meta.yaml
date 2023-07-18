@@ -82,7 +82,8 @@ outputs:
       run_constrained:
         # other packages carry the full `run` dependency
         - pandoc >={{ min_pandoc }},<{{ max_pandoc }}
-        - pyppeteer >=1,<1.1
+        # TODO: restore after https://github.com/conda-forge/staged-recipes/issues/23382
+        # - playwright-python >=???,<???
         # avoid mixing nbconvert-core and pre-split nbconvert
         # should be {{ pin_subpackage("nbconvert", exact=True) }}
         # but seems to produce the wrong thing here
@@ -104,29 +105,30 @@ outputs:
         - jupyter nbconvert --help
         - jupyter dejavu --help
 
-  - name: nbconvert-webpdf
-    build:
-      noarch: python
-    requirements:
-      host:
-        - python >=3.8
-        - pip
-      run:
-        - {{ pin_subpackage("nbconvert-core", exact=True) }}
-        # the pin is handled by the `run_constrained` in nbconvert-core
-        - pyppeteer
-        - python >=3.8
-    test:
-      requires:
-        - pip
-      commands:
-        - pip check
-        - jupyter nbconvert --version
-        - jupyter dejavu --version
-        - jupyter nbconvert --help
-        - jupyter dejavu --help
-    about:
-      description: nbconvert with extra packages for browser-based PDF generation
+  # TODO: restore after https://github.com/conda-forge/staged-recipes/issues/23382
+  # - name: nbconvert-webpdf
+  #   build:
+  #     noarch: python
+  #   requirements:
+  #     host:
+  #       - python >=3.8
+  #       - pip
+  #     run:
+  #       - {{ pin_subpackage("nbconvert-core", exact=True) }}
+  #       # the pin is handled by the `run_constrained` in nbconvert-core
+  #       - playwright-python
+  #       - python >=3.8
+  #   test:
+  #     requires:
+  #       - pip
+  #     commands:
+  #       - pip check
+  #       - jupyter nbconvert --version
+  #       - jupyter dejavu --version
+  #       - jupyter nbconvert --help
+  #       - jupyter dejavu --help
+  #   about:
+  #     description: nbconvert with extra packages for browser-based PDF generation
 
   - name: nbconvert-pandoc
     build:
@@ -163,7 +165,8 @@ outputs:
         - pip
         - python >=3.8
       run:
-        - {{ pin_subpackage("nbconvert-webpdf", exact=True) }}
+        # TODO: restore after https://github.com/conda-forge/staged-recipes/issues/23382
+        # - {{ pin_subpackage("nbconvert-webpdf", exact=True) }}
         - {{ pin_subpackage("nbconvert", exact=True) }}
         - python >=3.8
     test:
