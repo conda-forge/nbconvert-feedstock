@@ -31,8 +31,8 @@ Package license:
 
 nbconvert with extra packages for pandoc-based outputs
 
-About nbconvert-webpdf
-----------------------
+About nbconvert-qtpdf
+---------------------
 
 
 
@@ -71,7 +71,7 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-nbconvert--all-green.svg)](https://anaconda.org/conda-forge/nbconvert-all) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nbconvert-all.svg)](https://anaconda.org/conda-forge/nbconvert-all) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nbconvert-all.svg)](https://anaconda.org/conda-forge/nbconvert-all) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nbconvert-all.svg)](https://anaconda.org/conda-forge/nbconvert-all) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-nbconvert--core-green.svg)](https://anaconda.org/conda-forge/nbconvert-core) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nbconvert-core.svg)](https://anaconda.org/conda-forge/nbconvert-core) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nbconvert-core.svg)](https://anaconda.org/conda-forge/nbconvert-core) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nbconvert-core.svg)](https://anaconda.org/conda-forge/nbconvert-core) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-nbconvert--pandoc-green.svg)](https://anaconda.org/conda-forge/nbconvert-pandoc) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nbconvert-pandoc.svg)](https://anaconda.org/conda-forge/nbconvert-pandoc) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nbconvert-pandoc.svg)](https://anaconda.org/conda-forge/nbconvert-pandoc) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nbconvert-pandoc.svg)](https://anaconda.org/conda-forge/nbconvert-pandoc) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-nbconvert--webpdf-green.svg)](https://anaconda.org/conda-forge/nbconvert-webpdf) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nbconvert-webpdf.svg)](https://anaconda.org/conda-forge/nbconvert-webpdf) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nbconvert-webpdf.svg)](https://anaconda.org/conda-forge/nbconvert-webpdf) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nbconvert-webpdf.svg)](https://anaconda.org/conda-forge/nbconvert-webpdf) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-nbconvert--qtpdf-green.svg)](https://anaconda.org/conda-forge/nbconvert-qtpdf) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/nbconvert-qtpdf.svg)](https://anaconda.org/conda-forge/nbconvert-qtpdf) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/nbconvert-qtpdf.svg)](https://anaconda.org/conda-forge/nbconvert-qtpdf) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/nbconvert-qtpdf.svg)](https://anaconda.org/conda-forge/nbconvert-qtpdf) |
 
 Installing nbconvert
 ====================
@@ -83,16 +83,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `nbconvert, nbconvert-all, nbconvert-core, nbconvert-pandoc, nbconvert-webpdf` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `nbconvert, nbconvert-all, nbconvert-core, nbconvert-pandoc, nbconvert-qtpdf` can be installed with `conda`:
 
 ```
-conda install nbconvert nbconvert-all nbconvert-core nbconvert-pandoc nbconvert-webpdf
+conda install nbconvert nbconvert-all nbconvert-core nbconvert-pandoc nbconvert-qtpdf
 ```
 
 or with `mamba`:
 
 ```
-mamba install nbconvert nbconvert-all nbconvert-core nbconvert-pandoc nbconvert-webpdf
+mamba install nbconvert nbconvert-all nbconvert-core nbconvert-pandoc nbconvert-qtpdf
 ```
 
 It is possible to list all of the versions of `nbconvert` available on your platform with `conda`:
