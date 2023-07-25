@@ -147,6 +147,8 @@ outputs:
         - nbconvert/tests/files/notebook1.ipynb
       requires:
         - pip
+      script_env:
+        - DISPLAY=localhost:1.0  # [linux] 
       commands:
         - pip check
         - jupyter nbconvert --version
@@ -154,7 +156,7 @@ outputs:
         - jupyter nbconvert --help
         - jupyter dejavu --help
         - jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to qtpdf  # [not linux]
-        - DISPLAY=localhost: 1.0 xvfb-run -a jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to qtpdf  # [linux]
+        - xvfb-run -a jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to qtpdf  # [linux]
     about:
       description: nbconvert with extra packages for browser-based PDF generation
 
