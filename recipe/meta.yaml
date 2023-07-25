@@ -1,4 +1,4 @@
-{% set version = "7.7.2" %}
+{% set version = "7.7.3" %}
 
 {% set min_pandoc = "2.14.2" %}
 {% set max_pandoc = "4.0.0" %}
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: 36d3e7bf32f0c075878176cdeeb645931c994cbed5b747bc7a570ba8cd2321f3
+  sha256: 4a5996bf5f3cd16aa0431897ba1aa4c64842c2079f434b3dc6b8c4b252ef3355
 
 build:
   number: {{ build }}
@@ -147,6 +147,8 @@ outputs:
         - nbconvert/tests/files/notebook1.ipynb
       requires:
         - pip
+      script_env:
+        - DISPLAY=localhost:1.0  # [linux] 
       commands:
         - pip check
         - jupyter nbconvert --version
@@ -154,7 +156,7 @@ outputs:
         - jupyter nbconvert --help
         - jupyter dejavu --help
         - jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to qtpdf  # [not linux]
-        - "DISPLAY=localhost:1.0 xvfb-run -a jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to qtpdf"  # [linux]
+        - xvfb-run -a jupyter nbconvert nbconvert/tests/files/notebook1.ipynb --to qtpdf  # [linux]
     about:
       description: nbconvert with extra packages for browser-based PDF generation
 
