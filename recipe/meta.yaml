@@ -222,7 +222,6 @@ outputs:
         - jupyter dejavu --help
         - pytest -vv {{ pytest_args }}                                                          # [not linux]
         - xvfb-run -a coverage run --branch --source=nbconvert -m pytest -vv {{ pytest_args }}  # [linux]
-        - coverage run --branch --source=nbconvert -m pytest -vv {{ pytest_args }}              # [linux]
         - coverage report --show-missing --skip-covered --fail-under={{ cov_fail_under }}       # [linux]
     about:
       description: nbconvert with all optional packages
