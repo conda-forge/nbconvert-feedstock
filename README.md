@@ -199,6 +199,3 @@ Feedstock Maintainers
 * [@pelson](https://github.com/pelson/)
 * [@takluyver](https://github.com/takluyver/)
 
-
-<!-- dummy commit to enable rerendering -->
-
