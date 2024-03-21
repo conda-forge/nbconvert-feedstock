@@ -1,12 +1,17 @@
 {% set version = "7.16.3" %}
 
-{% set min_pandoc = "2.14.2" %}
+{% set min_python = "python >=3.8" %}
+
+{% set min_pandoc = "2.9.2" %}
 {% set max_pandoc = "4.0.0" %}
 
 {% set build = 0 %}
 
 {% set pytest_args = "-k \"not (convert_full_qualified_name or post_processor)\"" %}
 {% set cov_fail_under = "71" %}
+
+# handle undefined PYTHON in `noarch: generic` outputs
+{% if PYTHON is not defined %}{% set PYTHON = "$PYTHON" %}{% endif %}
 
 package:
   name: nbconvert-meta
@@ -22,10 +27,10 @@ build:
 
 requirements:
   host:
-    - python >=3.8
+    - {{ min_python }}
     - pip
   run:
-    - python >=3.8
+    - {{ min_python }}
 
 test:
   commands:
@@ -34,15 +39,11 @@ test:
 outputs:
   - name: nbconvert
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - pip
-        - python >=3.8
       run:
         - {{ pin_subpackage("nbconvert-core", exact=True) }}
         - {{ pin_subpackage("nbconvert-pandoc", exact=True) }}
-        - python >=3.8
     test:
       requires:
         - pip
@@ -62,10 +63,11 @@ outputs:
         - jupyter-nbconvert = nbconvert.nbconvertapp:main
     requirements:
       host:
+        - {{ min_python }}
         - hatchling >=1.5
         - pip
-        - python >=3.8
       run:
+        - {{ min_python }}
         - beautifulsoup4
         - bleach
         - defusedxml
@@ -80,7 +82,6 @@ outputs:
         - packaging
         - pandocfilters >=1.4.1
         - pygments >=2.4.1
-        - python >=3.8
         - tinycss2
         - traitlets >=5.0
       run_constrained:
@@ -112,16 +113,12 @@ outputs:
   # TODO: restore after https://github.com/conda-forge/staged-recipes/issues/23382
   # - name: nbconvert-webpdf
   #   build:
-  #     noarch: python
+  #     noarch: generic
   #   requirements:
-  #     host:
-  #       - python >=3.8
-  #       - pip
   #     run:
   #       - {{ pin_subpackage("nbconvert-core", exact=True) }}
   #       # the pin is handled by the `run_constrained` in nbconvert-core
   #       - playwright-python
-  #       - python >=3.8
   #   test:
   #     requires:
   #       - pip
@@ -136,15 +133,11 @@ outputs:
 
   - name: nbconvert-qtpdf
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - python >=3.8
-        - pip
       run:
         - {{ pin_subpackage("nbconvert-core", exact=True) }}
         - pyqtwebengine >=5.5
-        - python >=3.8
     test:
       source_files:
         - tests/files/notebook1.ipynb
@@ -165,16 +158,12 @@ outputs:
 
   - name: nbconvert-pandoc
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - pip
-        - python >=3.8
       run:
         - {{ pin_subpackage("nbconvert-core", exact=True) }}
         # the pin is handled by the `run_constrained` in nbconvert-core
         - pandoc
-        - python >=3.8
     test:
       files:
         - check_pandoc.py
@@ -192,17 +181,13 @@ outputs:
 
   - name: nbconvert-all
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - pip
-        - python >=3.8
       run:
         # TODO: restore after https://github.com/conda-forge/staged-recipes/issues/23382
         # - {{ pin_subpackage("nbconvert-webpdf", exact=True) }}
         - {{ pin_subpackage("nbconvert-qtpdf", exact=True) }}
         - {{ pin_subpackage("nbconvert", exact=True) }}
-        - python >=3.8
     test:
       source_files:
         - tests
