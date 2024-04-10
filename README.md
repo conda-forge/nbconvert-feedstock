@@ -25,27 +25,39 @@ formats via Jinja templates. The nbconvert tool allows you to convert an
 About nbconvert-pandoc
 ----------------------
 
+Home: https://jupyter.org
 
+Package license: BSD-3-Clause
 
-Package license: 
+Development: https://github.com/jupyter/nbconvert
+
+Documentation: https://nbconvert.readthedocs.org/
 
 nbconvert with extra packages for pandoc-based outputs
 
 About nbconvert-qtpdf
 ---------------------
 
+Home: https://jupyter.org
 
+Package license: BSD-3-Clause
 
-Package license: 
+Development: https://github.com/jupyter/nbconvert
+
+Documentation: https://nbconvert.readthedocs.org/
 
 nbconvert with extra packages for browser-based PDF generation
 
 About nbconvert-all
 -------------------
 
+Home: https://jupyter.org
 
+Package license: BSD-3-Clause
 
-Package license: 
+Development: https://github.com/jupyter/nbconvert
+
+Documentation: https://nbconvert.readthedocs.org/
 
 nbconvert with all optional packages
 
