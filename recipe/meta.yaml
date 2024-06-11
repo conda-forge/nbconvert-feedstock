@@ -177,6 +177,8 @@ outputs:
         - tests/files/notebook1.ipynb
       requires:
         - pip
+      script_env:
+        - DISPLAY=localhost:1.0  # [linux]
       commands:
         - pip check
         - jupyter nbconvert --version
@@ -193,8 +195,9 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("nbconvert-webpdf", max_pin="x.x.x") }}
+        - {{ pin_subpackage("nbconvert-core", max_pin="x.x.x") }}
         - {{ pin_subpackage("nbconvert-qtpdf", max_pin="x.x.x") }}
+        - {{ pin_subpackage("nbconvert-webpdf", max_pin="x.x.x") }}
         - {{ pin_subpackage("nbconvert", max_pin="x.x.x") }}
     test:
       source_files:
