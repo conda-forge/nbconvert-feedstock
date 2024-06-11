@@ -43,8 +43,8 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("nbconvert-core", exact=True) }}
-        - {{ pin_subpackage("nbconvert-pandoc", exact=True) }}
+        - {{ pin_subpackage("nbconvert-core", max_pin="x.x.x") }}
+        - {{ pin_subpackage("nbconvert-pandoc", max_pin="x.x.x") }}
     test:
       requires:
         - pip
@@ -88,12 +88,8 @@ outputs:
       run_constrained:
         # other packages carry the full `run` dependency
         - pandoc >={{ min_pandoc }},<{{ max_pandoc }}
-        # TODO: restore after https://github.com/conda-forge/staged-recipes/issues/23382
-        # - playwright-python >=???,<???
         # avoid mixing nbconvert-core and pre-split nbconvert
-        # should be {{ pin_subpackage("nbconvert", exact=True) }}
-        # but seems to produce the wrong thing here
-        - nbconvert ={{ version }}=*_{{ build }}
+        - {{ pin_subpackage("nbconvert", max_pin="x.x.x") }}
 
     test:
       imports:
@@ -111,33 +107,12 @@ outputs:
         - jupyter nbconvert --help
         - jupyter dejavu --help
 
-  # TODO: restore after https://github.com/conda-forge/staged-recipes/issues/23382
-  # - name: nbconvert-webpdf
-  #   build:
-  #     noarch: generic
-  #   requirements:
-  #     run:
-  #       - {{ pin_subpackage("nbconvert-core", exact=True) }}
-  #       # the pin is handled by the `run_constrained` in nbconvert-core
-  #       - playwright-python
-  #   test:
-  #     requires:
-  #       - pip
-  #     commands:
-  #       - pip check
-  #       - jupyter nbconvert --version
-  #       - jupyter dejavu --version
-  #       - jupyter nbconvert --help
-  #       - jupyter dejavu --help
-  #   about:
-  #     description: nbconvert with extra packages for browser-based PDF generation
-
   - name: nbconvert-qtpdf
     build:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("nbconvert-core", exact=True) }}
+        - {{ pin_subpackage("nbconvert-core", max_pin="x.x.x") }}
         - pyqtwebengine >=5.5
     test:
       source_files:
@@ -167,7 +142,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("nbconvert-core", exact=True) }}
+        - {{ pin_subpackage("nbconvert-core", max_pin="x.x.x") }}
         # the pin is handled by the `run_constrained` in nbconvert-core
         - pandoc
     test:
@@ -190,15 +165,37 @@ outputs:
       doc_url: https://nbconvert.readthedocs.org/
       dev_url: https://github.com/jupyter/nbconvert
 
+  - name: nbconvert-webpdf
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage("nbconvert-core", max_pin="x.x.x") }}
+        - playwright-python
+    test:
+      source_files:
+        - tests/files/notebook1.ipynb
+      requires:
+        - pip
+      commands:
+        - pip check
+        - jupyter nbconvert --version
+        - jupyter dejavu --version
+        - jupyter nbconvert --help
+        - jupyter dejavu --help
+        - jupyter nbconvert tests/files/notebook1.ipynb --to webpdf  # [not linux]
+        - xvfb-run -a jupyter nbconvert tests/files/notebook1.ipynb --to webpdf  # [linux]
+    about:
+      description: nbconvert with extra packages for browser-based PDF generation
+
   - name: nbconvert-all
     build:
       noarch: generic
     requirements:
       run:
-        # TODO: restore after https://github.com/conda-forge/staged-recipes/issues/23382
-        # - {{ pin_subpackage("nbconvert-webpdf", exact=True) }}
-        - {{ pin_subpackage("nbconvert-qtpdf", exact=True) }}
-        - {{ pin_subpackage("nbconvert", exact=True) }}
+        - {{ pin_subpackage("nbconvert-webpdf", max_pin="x.x.x") }}
+        - {{ pin_subpackage("nbconvert-qtpdf", max_pin="x.x.x") }}
+        - {{ pin_subpackage("nbconvert", max_pin="x.x.x") }}
     test:
       source_files:
         - tests
