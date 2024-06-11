@@ -6,7 +6,7 @@
 {% set min_pandoc = "2.9.2" %}
 {% set max_pandoc = "4.0.0" %}
 
-{% set build = 0 %}
+{% set build = 1 %}
 
 {% set pytest_args = "-k \"not (convert_full_qualified_name or post_processor)\"" %}
 {% set cov_fail_under = "71" %}
@@ -88,11 +88,8 @@ outputs:
       run_constrained:
         # other packages carry the full `run` dependency
         - pandoc >={{ min_pandoc }},<{{ max_pandoc }}
-        # TODO: restore after https://github.com/conda-forge/staged-recipes/issues/23382
-        # - playwright-python >=???,<???
         # avoid mixing nbconvert-core and pre-split nbconvert
-        # should be {{ pin_subpackage("nbconvert", exact=True) }}
-        # but seems to produce the wrong thing here
+        # can't mix noarch:generic and noarch:python with exact=True
         - nbconvert ={{ version }}=*_{{ build }}
 
     test:
@@ -110,27 +107,6 @@ outputs:
         - jupyter dejavu --version
         - jupyter nbconvert --help
         - jupyter dejavu --help
-
-  # TODO: restore after https://github.com/conda-forge/staged-recipes/issues/23382
-  # - name: nbconvert-webpdf
-  #   build:
-  #     noarch: generic
-  #   requirements:
-  #     run:
-  #       - {{ pin_subpackage("nbconvert-core", exact=True) }}
-  #       # the pin is handled by the `run_constrained` in nbconvert-core
-  #       - playwright-python
-  #   test:
-  #     requires:
-  #       - pip
-  #     commands:
-  #       - pip check
-  #       - jupyter nbconvert --version
-  #       - jupyter dejavu --version
-  #       - jupyter nbconvert --help
-  #       - jupyter dejavu --help
-  #   about:
-  #     description: nbconvert with extra packages for browser-based PDF generation
 
   - name: nbconvert-qtpdf
     build:
@@ -190,14 +166,39 @@ outputs:
       doc_url: https://nbconvert.readthedocs.org/
       dev_url: https://github.com/jupyter/nbconvert
 
+  - name: nbconvert-webpdf
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage("nbconvert-core", exact=True) }}
+        - playwright-python
+    test:
+      source_files:
+        - tests/files/notebook1.ipynb
+      requires:
+        - pip
+      script_env:
+        - DISPLAY=localhost:1.0  # [linux]
+      commands:
+        - pip check
+        - jupyter nbconvert --version
+        - jupyter dejavu --version
+        - jupyter nbconvert --help
+        - jupyter dejavu --help
+        - playwright install chromium
+        - jupyter nbconvert tests/files/notebook1.ipynb --to webpdf
+    about:
+      description: nbconvert with extra packages for browser-based PDF generation
+
   - name: nbconvert-all
     build:
       noarch: generic
     requirements:
       run:
-        # TODO: restore after https://github.com/conda-forge/staged-recipes/issues/23382
-        # - {{ pin_subpackage("nbconvert-webpdf", exact=True) }}
+        - {{ pin_subpackage("nbconvert-core", exact=True) }}
         - {{ pin_subpackage("nbconvert-qtpdf", exact=True) }}
+        - {{ pin_subpackage("nbconvert-webpdf", exact=True) }}
         - {{ pin_subpackage("nbconvert", exact=True) }}
     test:
       source_files:
