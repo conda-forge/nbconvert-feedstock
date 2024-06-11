@@ -4,3 +4,5 @@ xorg-x11-server-Xvfb
 # webpdf
 alsa-lib
 gtk3
+nspr
+nss
