@@ -1,2 +1,5 @@
+# qtpdf
 mesa-libGL
 xorg-x11-server-Xvfb
+# webpdf
+gtk3

@@ -185,8 +185,7 @@ outputs:
         - jupyter dejavu --version
         - jupyter nbconvert --help
         - jupyter dejavu --help
-        - jupyter nbconvert tests/files/notebook1.ipynb --to webpdf  # [not linux]
-        - xvfb-run -a jupyter nbconvert tests/files/notebook1.ipynb --to webpdf  # [linux]
+        - jupyter nbconvert tests/files/notebook1.ipynb --to webpdf --allow-chromium-download
     about:
       description: nbconvert with extra packages for browser-based PDF generation
 
