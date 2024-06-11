@@ -43,8 +43,8 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("nbconvert-core", max_pin="x.x.x") }}
-        - {{ pin_subpackage("nbconvert-pandoc", max_pin="x.x.x") }}
+        - {{ pin_subpackage("nbconvert-core", exact=True) }}
+        - {{ pin_subpackage("nbconvert-pandoc", exact=True) }}
     test:
       requires:
         - pip
@@ -89,7 +89,8 @@ outputs:
         # other packages carry the full `run` dependency
         - pandoc >={{ min_pandoc }},<{{ max_pandoc }}
         # avoid mixing nbconvert-core and pre-split nbconvert
-        - {{ pin_subpackage("nbconvert", max_pin="x.x.x") }}
+        # can't mix noarch:generic and noarch:python with exact=True
+        - nbconvert ={{ version }}=*_{{ build }}
 
     test:
       imports:
@@ -112,7 +113,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("nbconvert-core", max_pin="x.x.x") }}
+        - {{ pin_subpackage("nbconvert-core", exact=True) }}
         - pyqtwebengine >=5.5
     test:
       source_files:
@@ -142,7 +143,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("nbconvert-core", max_pin="x.x.x") }}
+        - {{ pin_subpackage("nbconvert-core", exact=True) }}
         # the pin is handled by the `run_constrained` in nbconvert-core
         - pandoc
     test:
@@ -170,7 +171,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("nbconvert-core", max_pin="x.x.x") }}
+        - {{ pin_subpackage("nbconvert-core", exact=True) }}
         - playwright-python
     test:
       source_files:
@@ -195,10 +196,10 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("nbconvert-core", max_pin="x.x.x") }}
-        - {{ pin_subpackage("nbconvert-qtpdf", max_pin="x.x.x") }}
-        - {{ pin_subpackage("nbconvert-webpdf", max_pin="x.x.x") }}
-        - {{ pin_subpackage("nbconvert", max_pin="x.x.x") }}
+        - {{ pin_subpackage("nbconvert-core", exact=True) }}
+        - {{ pin_subpackage("nbconvert-qtpdf", exact=True) }}
+        - {{ pin_subpackage("nbconvert-webpdf", exact=True) }}
+        - {{ pin_subpackage("nbconvert", exact=True) }}
     test:
       source_files:
         - tests
