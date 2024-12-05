@@ -6,7 +6,7 @@
 {% set min_pandoc = "2.9.2" %}
 {% set max_pandoc = "4.0.0" %}
 
-{% set build = 1 %}
+{% set build = 2 %}
 
 {% set pytest_args = "-k \"not (convert_full_qualified_name or post_processor)\"" %}
 {% set cov_fail_under = "71" %}
@@ -19,7 +19,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
   sha256: 86ca91ba266b0a448dc96fa6c5b9d98affabde2867b363258703536807f9f7f4
 
 build:
@@ -34,6 +34,8 @@ requirements:
     - {{ min_python }}
 
 test:
+  requires:
+    - python {{ python_min }}
   commands:
     - echo "tests in outputs"
 
@@ -93,6 +95,8 @@ outputs:
         - nbconvert ={{ version }}=*_{{ build }}
 
     test:
+      requires:
+        - python {{ python_min }}
       imports:
         - nbconvert
         - nbconvert.exporters
