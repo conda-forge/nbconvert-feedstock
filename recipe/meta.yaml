@@ -1,18 +1,14 @@
-{% set min_python = "python >=3.8" %}
 {% set version = "7.16.4" %}
-
-{% set min_python = "python >=3.8" %}
 
 {% set min_pandoc = "2.9.2" %}
 {% set max_pandoc = "4.0.0" %}
 
-{% set build = 2 %}
+{% set build = 3 %}
 
 {% set pytest_args = "-k \"not (convert_full_qualified_name or post_processor)\"" %}
 {% set cov_fail_under = "71" %}
 
-# handle undefined PYTHON in `noarch: generic` outputs
-{% if PYTHON is not defined %}{% set PYTHON = "$PYTHON" %}{% endif %}
+{% set PYTHON = PYTHON | default("$PYTHON") %}
 
 package:
   name: nbconvert-meta
@@ -28,16 +24,9 @@ build:
 
 requirements:
   host:
-    - {{ min_python }}
-    - pip
-  run:
-    - {{ min_python }}
-
-test:
-  requires:
     - python {{ python_min }}
-  commands:
-    - echo "tests in outputs"
+  run:
+    - python >={{ python_min }}
 
 outputs:
   - name: nbconvert
@@ -66,11 +55,11 @@ outputs:
         - jupyter-nbconvert = nbconvert.nbconvertapp:main
     requirements:
       host:
-        - {{ min_python }}
+        - python {{ python_min }}
         - hatchling >=1.5
         - pip
       run:
-        - {{ min_python }}
+        - python >={{ python_min }}
         - beautifulsoup4
         - bleach
         - defusedxml
@@ -79,7 +68,7 @@ outputs:
         - jupyter_core >=4.7
         - jupyterlab_pygments
         - markupsafe >=2.0
-        - mistune >=2.0.3,<4
+        - mistune >=2.0.3,<3.1
         - nbclient >=0.5.0
         - nbformat >=5.1
         - packaging
