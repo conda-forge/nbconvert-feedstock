@@ -1,9 +1,9 @@
-{% set version = "7.16.4" %}
+{% set version = "7.16.5" %}
 
 {% set min_pandoc = "2.9.2" %}
 {% set max_pandoc = "4.0.0" %}
 
-{% set build = 3 %}
+{% set build = 0 %}
 
 {% set pytest_args = "-k \"not (convert_full_qualified_name or post_processor)\"" %}
 {% set cov_fail_under = "71" %}
@@ -16,7 +16,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/n/nbconvert/nbconvert-{{ version }}.tar.gz
-  sha256: 86ca91ba266b0a448dc96fa6c5b9d98affabde2867b363258703536807f9f7f4
+  sha256: c83467bb5777fdfaac5ebbb8e864f300b277f68692ecc04d6dab72f2d8442344
 
 build:
   number: {{ build }}
@@ -61,21 +61,24 @@ outputs:
       run:
         - python >={{ python_min }}
         - beautifulsoup4
-        - bleach
         - defusedxml
         - entrypoints >=0.2.2
+        - importlib-metadata >=3.6
         - jinja2 >=3.0
         - jupyter_core >=4.7
         - jupyterlab_pygments
         - markupsafe >=2.0
-        - mistune >=2.0.3,<3.1
+        - mistune >=2.0.3,<4
         - nbclient >=0.5.0
-        - nbformat >=5.1
+        - nbformat >=5.7
         - packaging
         - pandocfilters >=1.4.1
         - pygments >=2.4.1
-        - tinycss2
-        - traitlets >=5.0
+        - traitlets >=5.1
+        # TODO: ensure a `bleach-with-css` https://github.com/conda-forge/bleach-feedstock/pull/42
+        # - bleach[css]!=5.0.0
+        - bleach !=5.0.0
+        - tinycss2 >=1.1.0,<1.5
       run_constrained:
         # other packages carry the full `run` dependency
         - pandoc >={{ min_pandoc }},<{{ max_pandoc }}
