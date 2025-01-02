@@ -61,21 +61,24 @@ outputs:
       run:
         - python >={{ python_min }}
         - beautifulsoup4
-        - bleach
         - defusedxml
         - entrypoints >=0.2.2
+        - importlib-metadata >=3.6
         - jinja2 >=3.0
         - jupyter_core >=4.7
         - jupyterlab_pygments
         - markupsafe >=2.0
         - mistune >=2.0.3,<4
         - nbclient >=0.5.0
-        - nbformat >=5.1
+        - nbformat >=5.7
         - packaging
         - pandocfilters >=1.4.1
         - pygments >=2.4.1
-        - tinycss2
-        - traitlets >=5.0
+        - traitlets >=5.1
+        # TODO: ensure a `bleach-with-css`
+        # - bleach[css]!=5.0.0
+        - bleach !=5.0.0
+        - tinycss2 >=1.1.0,<1.5
       run_constrained:
         # other packages carry the full `run` dependency
         - pandoc >={{ min_pandoc }},<{{ max_pandoc }}
