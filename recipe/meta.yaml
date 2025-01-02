@@ -75,7 +75,7 @@ outputs:
         - pandocfilters >=1.4.1
         - pygments >=2.4.1
         - traitlets >=5.1
-        # TODO: ensure a `bleach-with-css`
+        # TODO: ensure a `bleach-with-css` https://github.com/conda-forge/bleach-feedstock/pull/42
         # - bleach[css]!=5.0.0
         - bleach !=5.0.0
         - tinycss2 >=1.1.0,<1.5
