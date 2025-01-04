@@ -3,7 +3,7 @@
 {% set min_pandoc = "2.9.2" %}
 {% set max_pandoc = "4.0.0" %}
 
-{% set build = 0 %}
+{% set build = 1 %}
 
 {% set pytest_args = "-k \"not (convert_full_qualified_name or post_processor)\"" %}
 {% set cov_fail_under = "71" %}
@@ -59,8 +59,8 @@ outputs:
         - hatchling >=1.5
         - pip
       run:
-        - python >={{ python_min }}
         - beautifulsoup4
+        - bleach-with-css !=5.0.0
         - defusedxml
         - entrypoints >=0.2.2
         - importlib-metadata >=3.6
@@ -74,11 +74,8 @@ outputs:
         - packaging
         - pandocfilters >=1.4.1
         - pygments >=2.4.1
+        - python >={{ python_min }}
         - traitlets >=5.1
-        # TODO: ensure a `bleach-with-css` https://github.com/conda-forge/bleach-feedstock/pull/42
-        # - bleach[css]!=5.0.0
-        - bleach !=5.0.0
-        - tinycss2 >=1.1.0,<1.5
       run_constrained:
         # other packages carry the full `run` dependency
         - pandoc >={{ min_pandoc }},<{{ max_pandoc }}
