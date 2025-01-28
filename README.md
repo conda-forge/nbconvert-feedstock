@@ -7,7 +7,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nbconvert-feeds
 About nbconvert
 ---------------
 
-Home: https://jupyter.org
+Home: https://jupyter.org/
 
 Package license: BSD-3-Clause
 
@@ -21,13 +21,29 @@ The nbconvert tool, jupyter nbconvert, converts notebooks to various other
 formats via Jinja templates. The nbconvert tool allows you to convert an
 .ipynb notebook file into various static formats.
 
+About nbconvert-webpdf
+----------------------
+
+Home: https://jupyter.org/
+
+Package license: BSD-3-Clause
+
+Summary: Converting Jupyter Notebooks
+
+Development: https://github.com/jupyter/nbconvert
+
+Documentation: https://nbconvert.readthedocs.org/
+
+nbconvert with extra packages for browser-based PDF generation
 
 About nbconvert-pandoc
 ----------------------
 
-Home: https://jupyter.org
+Home: https://jupyter.org/
 
 Package license: BSD-3-Clause
+
+Summary: Converting Jupyter Notebooks
 
 Development: https://github.com/jupyter/nbconvert
 
@@ -38,9 +54,11 @@ nbconvert with extra packages for pandoc-based outputs
 About nbconvert-qtpdf
 ---------------------
 
-Home: https://jupyter.org
+Home: https://jupyter.org/
 
 Package license: BSD-3-Clause
+
+Summary: Converting Jupyter Notebooks
 
 Development: https://github.com/jupyter/nbconvert
 
@@ -48,21 +66,14 @@ Documentation: https://nbconvert.readthedocs.org/
 
 nbconvert with extra packages for browser-based PDF generation
 
-About nbconvert-webpdf
-----------------------
-
-
-
-Package license: 
-
-nbconvert with extra packages for browser-based PDF generation
-
 About nbconvert-all
 -------------------
 
-Home: https://jupyter.org
+Home: https://jupyter.org/
 
 Package license: BSD-3-Clause
+
+Summary: Converting Jupyter Notebooks
 
 Development: https://github.com/jupyter/nbconvert
 
