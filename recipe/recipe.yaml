@@ -3,6 +3,7 @@ schema_version: 1
 
 context:
   version: 7.16.6
+  build: 0
   min_pandoc: 2.9.2
   max_pandoc: 4.0.0
   pytest_args: -k "not (convert_full_qualified_name or post_processor)"
@@ -17,7 +18,7 @@ source:
   sha256: 576a7e37c6480da7b8465eefa66c17844243816ce1ccc372633c6b71c3c0f582
 
 build:
-  number: 0
+  number: ${{ build }}
   noarch: python
 
 outputs:
@@ -78,7 +79,8 @@ outputs:
         - traitlets >=5.1
       run_constraints:
         - pandoc >=${{ min_pandoc }},<${{ max_pandoc }}
-        - ${{ pin_subpackage("nbconvert", exact=True) }}
+        # can't be a `pin_subpackage`: circular dependency
+        - nbconvert ==${{ version }}[build=*_${{ build }}]
     tests:
       - python:
           pip_check: true
