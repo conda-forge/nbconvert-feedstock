@@ -3,10 +3,12 @@ schema_version: 1
 
 context:
   version: 7.16.6
-  build: 0
+  build: 1
+  python_check_max: 3.14
+  python_prev_check_max: 3.13
   min_pandoc: 2.9.2
   max_pandoc: 4.0.0
-  pytest_args: -k "not (convert_full_qualified_name or post_processor)"
+  pytest_args: --color=yes --tb=long -k "not (convert_full_qualified_name or post_processor)"
   cov_fail_under: 71
 
 recipe:
@@ -32,10 +34,11 @@ outputs:
         - ${{ pin_subpackage("nbconvert-pandoc", exact=True) }}
     tests:
       - python:
+          imports: nbconvert
           pip_check: true
-          python_version: ${{ python_min }}.*
-          imports:
-            - nbconvert
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
       - requirements:
           run:
             - python ${{ python_min }}.*
@@ -83,8 +86,6 @@ outputs:
         - nbconvert ==${{ version }}[build=*_${{ build }}]
     tests:
       - python:
-          pip_check: true
-          python_version: ${{ python_min }}.*
           imports:
             - nbconvert
             - nbconvert.exporters
@@ -94,6 +95,10 @@ outputs:
             - nbconvert.resources
             - nbconvert.utils
             - nbconvert.writers
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
       - requirements:
           run:
             - python ${{ python_min }}.*
@@ -113,10 +118,11 @@ outputs:
         - pyqtwebengine >=5.5
     tests:
       - python:
+          imports: nbconvert
           pip_check: true
-          python_version: ${{ python_min }}.*
-          imports:
-            - nbconvert
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_prev_check_max }}.*
       - files:
           source:
             - tests/files/notebook1.ipynb
@@ -153,10 +159,11 @@ outputs:
         - pandoc
     tests:
       - python:
+          imports: nbconvert
           pip_check: true
-          python_version: ${{ python_min }}.*
-          imports:
-            - nbconvert
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
       - files:
           recipe:
             - check_pandoc.py
@@ -187,10 +194,11 @@ outputs:
         - playwright-python
     tests:
       - python:
+          imports: nbconvert
           pip_check: true
-          python_version: ${{ python_min }}.*
-          imports:
-            - nbconvert
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_prev_check_max }}.*
       - files:
           source:
             - tests/files/notebook1.ipynb
@@ -227,10 +235,11 @@ outputs:
         - ${{ pin_subpackage("nbconvert", exact=True) }}
     tests:
       - python:
+          imports: nbconvert
           pip_check: true
-          python_version: ${{ python_min }}.*
-          imports:
-            - nbconvert
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_prev_check_max }}.*
       - files:
           source:
             - pyproject.toml
