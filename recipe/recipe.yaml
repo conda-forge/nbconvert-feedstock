@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "7.17.0"
+  version: "7.17.1"
   # needed for "soft" `pin_depends`
   build: "0"
   python_check_max: "3.14"
@@ -20,7 +20,7 @@ recipe:
 
 source:
   url: https://pypi.org/packages/source/n/nbconvert/nbconvert-${{ version }}.tar.gz
-  sha256: 1b2696f1b5be12309f6c7d707c24af604b87dfaf6d950794c7b07acab96dda78
+  sha256: 34d0d0a7e73ce3cbab6c5aae8f4f468797280b01fd8bd2ca746da8569eddd7d2
 
 build:
   number: ${{ build }}
