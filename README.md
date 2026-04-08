@@ -17,9 +17,7 @@ Development: https://github.com/jupyter/nbconvert
 
 Documentation: https://nbconvert.readthedocs.org/
 
-The nbconvert tool, jupyter nbconvert, converts notebooks to various other
-formats via Jinja templates. The nbconvert tool allows you to convert an
-.ipynb notebook file into various static formats.
+nbconvert with pandoc
 
 About nbconvert-all
 -------------------
@@ -35,6 +33,21 @@ Development: https://github.com/jupyter/nbconvert
 Documentation: https://nbconvert.readthedocs.org/
 
 nbconvert with all optional packages
+
+About nbconvert-core
+--------------------
+
+Home: https://jupyter.org/
+
+Package license: BSD-3-Clause
+
+Summary: Converting Jupyter Notebooks
+
+Development: https://github.com/jupyter/nbconvert
+
+Documentation: https://nbconvert.readthedocs.org/
+
+nbconvert core
 
 About nbconvert-pandoc
 ----------------------
