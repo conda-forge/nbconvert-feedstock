@@ -4,7 +4,7 @@ schema_version: 1
 context:
   version: "7.17.1"
   # needed for "soft" `pin_depends`
-  build: "0"
+  build: "1"
   python_check_max: "3.14"
   # out-of-band deps
   min_pandoc: "2.9.2"
