@@ -50,6 +50,13 @@ outputs:
           - jupyter dejavu --version
           - jupyter nbconvert --help
           - jupyter dejavu --help
+    about:
+      license: BSD-3-Clause
+      license_file: LICENSE
+      description: nbconvert with pandoc
+      homepage: https://jupyter.org
+      repository: https://github.com/jupyter/nbconvert
+      documentation: https://nbconvert.readthedocs.org
 
   - package:
       name: nbconvert-core
@@ -110,6 +117,13 @@ outputs:
           - jupyter dejavu --version
           - jupyter nbconvert --help
           - jupyter dejavu --help
+    about:
+      license: BSD-3-Clause
+      license_file: LICENSE
+      description: nbconvert core
+      homepage: https://jupyter.org
+      repository: https://github.com/jupyter/nbconvert
+      documentation: https://nbconvert.readthedocs.org
 
   - package:
       name: nbconvert-qtpdf
